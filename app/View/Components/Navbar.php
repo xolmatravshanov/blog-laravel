@@ -4,9 +4,8 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class BlogCard extends Component
+class Navbar extends Component
 {
-
     /**
      * Create a new component instance.
      *
@@ -24,8 +23,6 @@ class BlogCard extends Component
      */
     public function render()
     {
-        return view('components.blog-card');
+        return view('components.navbar');
     }
-
-
 }
