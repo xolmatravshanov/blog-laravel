@@ -28,15 +28,12 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('/blog', [BlogController::class]);
-    Route::resource('/category', [CategoryController::class]);
-    Route::resource('/comment', [CommentController::class]);
-    Route::resource('/subscriber', [SubscriberController::class]);
-    Route::resource('/tag', [TagController::class]);
+    Route::resource('/blog', BlogController::class);
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/comment', CommentController::class);
+    Route::resource('/subscriber', SubscriberController::class);
+    Route::resource('/tag', TagController::class);
 });
-
-
-
 
 
 

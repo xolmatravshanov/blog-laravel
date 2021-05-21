@@ -12,6 +12,16 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * @var role
+     */
+    public const  role = [
+        'writer' => 'writer',
+        'reader' => 'reader',
+        'admin' => 'admin',
+    ];
+
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
