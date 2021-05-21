@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::resource('/blog', [BlogController::class]);
+
+Route::resource('/blog', [BlogController::class]);
+
+
+//Route::resource('/blog', [BlogController::class])->middleware(['auth']);
+//Route::resource('/blog', [BlogController::class])->only(['index', 'create']);
+//Route::resource('/blog', [BlogController::class])->except(['destroy']);

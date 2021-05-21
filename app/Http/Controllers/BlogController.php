@@ -39,7 +39,6 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'title' => 'required',
             'body' => 'required',
@@ -114,14 +113,12 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-
         $blog  = Blog::where('id', $id);
 
         $blog->delete();
 
         return redirect()->route('blog.index')
             ->with('success','Blog deleted successfully');
-
 
     }
 }
