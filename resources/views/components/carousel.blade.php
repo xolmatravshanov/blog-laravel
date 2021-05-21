@@ -9,7 +9,7 @@
         @foreach($items as $key => $img)
             <div class="carousel-item">
                 <img style="height: 400px" class="d-block w-100" src="{{ $img }}" alt="First slide">
-                <a href="#">
+                <a href="{{ $key }}">
                     <h1>Lorem ipsum dolor sit amet.</h1>
                 </a>
             </div>

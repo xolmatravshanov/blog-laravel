@@ -24,7 +24,7 @@
         <div class="container p-0">
             <x-navbar/>
         </div>
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>
