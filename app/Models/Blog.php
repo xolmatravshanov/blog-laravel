@@ -33,7 +33,9 @@ class Blog extends Model
     ];
 
 
-
+    public function tags(){
+        $this->belongsToMany(BlogTag::class);
+    }
 
 
 }

@@ -53,5 +53,17 @@ class User extends Authenticatable
     ];
 
 
+    public function writer_posts(){
+        $this->hasMany(Blog::class, 'writer_id', 'id');
+    }
+
+    public function checker_posts(){
+        $this->hasMany(Blog::class, 'checker_id', 'id');
+    }
+
+    public function subscriber(){
+        $this->hasMany(Subscriber::class);
+    }
+
 
 }
