@@ -10,4 +10,7 @@ class OffensiveWord extends Model
     use HasFactory;
 
     protected $table = 'offensive_word';
+
+
+
 }

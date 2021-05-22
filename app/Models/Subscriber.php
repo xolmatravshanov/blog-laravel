@@ -12,7 +12,9 @@ class Subscriber extends Model
     protected $table = 'subscriber';
 
 
-
+    public function subscribers(){
+        return $this->belongsToMany(User::class, 'subscriber', 'writer_id', 'subscriber_id');
+    }
 
 }
 

@@ -52,18 +52,36 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function writer_posts(){
+    /**
+     *  get all writer's blogs
+     */
+    public function writer_blogs()
+    {
         $this->hasMany(Blog::class, 'writer_id', 'id');
     }
 
-    public function checker_posts(){
+    /**
+     *  gets all checker's blogs
+     */
+    public function checker_blogs()
+    {
         $this->hasMany(Blog::class, 'checker_id', 'id');
     }
 
-    public function subscriber(){
+    /**
+     * gets all writers all subscribers
+     */
+    public function subscriber()
+    {
         $this->hasMany(Subscriber::class);
     }
 
+    /**
+     * gets all comments from comments table
+     */
+    public function comments()
+    {
+        $this->hasMany(Comment::class, 'user_id', 'id');
+    }
 
 }

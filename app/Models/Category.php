@@ -12,7 +12,9 @@ class Category extends Model
     protected $table = 'category';
 
 
-
+    public function blogs(){
+        $this->hasMany(Blog::class, 'category_id', 'id');
+    }
 
 
 }
