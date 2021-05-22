@@ -12,6 +12,9 @@ class Blog extends Model
 
     protected $table = 'blog';
 
+    /**
+     * status of checker role
+     */
     public const checker_status = [
         'published' => 'published',
         'checking' => 'checking',
@@ -21,6 +24,9 @@ class Blog extends Model
         'new' => 'new',
     ];
 
+    /**
+     * @var  status of writer
+     */
     public const writer_status = [
         'draft' => 'draft',
         'publish' => 'publish',
