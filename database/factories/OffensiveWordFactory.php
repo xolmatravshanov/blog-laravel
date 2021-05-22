@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\OffensiveWord;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 class OffensiveWordFactory extends Factory
 {
@@ -44,7 +44,7 @@ class OffensiveWordFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->name(),
+            'title' => $this->words[random_int(0,17)],
         ];
     }
 }

@@ -2,25 +2,23 @@
 
 namespace App\Console\Commands;
 
-use Database\Factories\OffensiveWordFactory;
 use Illuminate\Console\Command;
-use Illuminate\Support\Collection;
 
-class Development extends Command
+class PostClear extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'dev:run {args}';
+    protected $signature = 'command:name';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'For development purpose debugging';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -39,14 +37,6 @@ class Development extends Command
      */
     public function handle()
     {
-        $args = $this->argument('args');
-
+        return 0;
     }
-
-    public function testOffinsiweWords(){
-        $words = new OffensiveWordFactory;
-        $count = (new Collection($words->words))->random();
-        dd($count);
-    }
-
 }
