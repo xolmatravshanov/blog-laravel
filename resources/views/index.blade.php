@@ -10,7 +10,7 @@
     @endphp
 
     <x-carousel :items="$item"/>
-    <div class="container">
+    <div class="container font-mono">
 
         <div class="row justify-content-center">
             @for($i = 0; $i < 48; $i ++)

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\OffensiveWord;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class OffensiveWordFactory extends Factory
 {
@@ -14,6 +15,27 @@ class OffensiveWordFactory extends Factory
      */
     protected $model = OffensiveWord::class;
 
+    public $words = [
+        'fuck',
+        'shit',
+        'piss',
+        'dick',
+        'asshole',
+        'bitch',
+        'bastard',
+        'damn',
+        'bollocks',
+        'bugger',
+        'choad',
+        'crikey',
+        'rubbish',
+        'shag',
+        'wanker',
+        'piss',
+        'twat',
+        'suck',
+    ];
+
     /**
      * Define the model's default state.
      *
@@ -22,7 +44,7 @@ class OffensiveWordFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->name(),
         ];
     }
 }
