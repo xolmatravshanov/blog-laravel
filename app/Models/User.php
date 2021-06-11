@@ -5,33 +5,34 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'users';
 
     /**
      * @var role
      */
-    public const  role = [
+    public const role = [
         'writer' => 'writer',
         'reader' => 'reader',
         'admin' => 'admin',
     ];
 
-
     /**
      * The attributes that are mass assignable.
-     *
      * @var array
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,6 +44,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -52,6 +54,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     /**
      *  get all writer's blogs
      */
@@ -59,6 +62,7 @@ class User extends Authenticatable
     {
         $this->hasMany(Blog::class, 'writer_id', 'id');
     }
+
 
     /**
      *  gets all checker's blogs
@@ -68,6 +72,7 @@ class User extends Authenticatable
         $this->hasMany(Blog::class, 'checker_id', 'id');
     }
 
+
     /**
      * gets all writers all subscribers
      */
@@ -75,6 +80,7 @@ class User extends Authenticatable
     {
         $this->hasMany(Subscriber::class);
     }
+
 
     /**
      * gets all comments from comments table
