@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,17 +30,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // No Related
+
+        /**
+         * No Related Models
+         */
 
         // User
         // OffensiveWords
         // Tags
         // Categories
 
+        $this->call([
+            OffensiveWordSeeder::class,
+            User::factory(self::defaultCreateCounts['user']),
+            Tag::factory(self::defaultCreateCounts['tag']),
+            Category::factory(self::defaultCreateCounts['category'])
+        ]);
 
-        // Related
+        /**
+         * Related Models
+         */
+
         // Blog -> user_id
-        // Blog_tag -> blog_id tag_id
+        // Blog_tag -> blog_id, tag_id
         // Comment ->user_id blog_id
 
 
@@ -55,9 +69,7 @@ class DatabaseSeeder extends Seeder
 
         /*
 
-        $this->call([
-            OffensiveWordSeeder::class,
-        ]);
+
 
         */
     }
