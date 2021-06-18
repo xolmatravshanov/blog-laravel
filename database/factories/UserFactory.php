@@ -24,6 +24,7 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
@@ -31,6 +32,7 @@ class UserFactory extends Factory
             'password' => Hash::make($this->faker->unique()->safeEmail()), // password
             'remember_token' => Str::random(10),
         ];
+
     }
 
     /**

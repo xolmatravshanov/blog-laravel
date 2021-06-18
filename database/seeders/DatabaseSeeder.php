@@ -28,35 +28,37 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-
-        // no related
+        // No Related
 
         // User
         // OffensiveWords
-        // tags
-        //categories
-
-        //Related
-        // blog ->user_id
-        // blog_tag -> blog_id tag_id
-        // comment ->user_id blog_id
-
-        // subscriber -> writer_id, subscriber_id => reader_id
+        // Tags
+        // Categories
 
 
+        // Related
+        // Blog -> user_id
+        // Blog_tag -> blog_id tag_id
+        // Comment ->user_id blog_id
 
-        \App\Models\User::factory(self::defaultCreateCounts['user'])
+
+        // Subscriber -> writer_id, subscriber_id => reader_id
+
+
+
+        /* \App\Models\User::factory(self::defaultCreateCounts['user'])
             ->create()->each(function ($user) {
                 Blog::factory(self::defaultCreateCounts['blog'])->create(['user_id' => $user->id])->each(function ($blog) {
 
                 });
-            });
+            });*/
 
+        /*
 
-
-        /*$this->call([
+        $this->call([
             OffensiveWordSeeder::class,
-        ]);*/
+        ]);
+
+        */
     }
 }
