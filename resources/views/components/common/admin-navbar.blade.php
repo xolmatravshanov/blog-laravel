@@ -16,8 +16,8 @@
             <ul class="nav navbar-nav ml-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link"
-
+                    <a class="nav-link btn btn-danger"
+                       style="color: #ffffff"
                        href="{{ route('logout') }}"
                        onclick="
                             event.preventDefault();
