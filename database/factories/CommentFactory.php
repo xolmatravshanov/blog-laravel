@@ -22,7 +22,11 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+           'id' => '',
+           'text' => '',
+           'blog_id' => '',
+           'user_id' => '',
+           'parent_id' => '',
         ];
     }
 }

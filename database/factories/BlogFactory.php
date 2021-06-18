@@ -22,7 +22,13 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-
+            'id' => '',
+            'title' => '',
+            'body' => '',
+            'writer_id' => '',
+            'status' => '',
+            'checker_id' => '',
+            'category_id' => '',
         ];
 
 

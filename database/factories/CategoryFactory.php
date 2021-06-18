@@ -22,7 +22,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => '',
+            'title' => ''
         ];
     }
 }

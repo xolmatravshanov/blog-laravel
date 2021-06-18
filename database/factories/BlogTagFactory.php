@@ -22,7 +22,8 @@ class BlogTagFactory extends Factory
     public function definition()
     {
         return [
-            //
+           'blog_id' => '',
+           'tag_id' => ''
         ];
     }
 }

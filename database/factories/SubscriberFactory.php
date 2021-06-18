@@ -22,7 +22,9 @@ class SubscriberFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => '',
+            'writer_id' => '',
+            'subscriber_id' => '',
         ];
     }
 }

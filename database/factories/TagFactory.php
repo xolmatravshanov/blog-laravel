@@ -22,7 +22,8 @@ class TagFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => '',
+            'title' => '',
         ];
     }
 }
