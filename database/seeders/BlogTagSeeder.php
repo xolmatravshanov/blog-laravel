@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BlogTag;
 use Illuminate\Database\Seeder;
 
 class BlogTagSeeder extends Seeder
@@ -13,6 +14,6 @@ class BlogTagSeeder extends Seeder
      */
     public function run()
     {
-        //
+       BlogTag::factory(80)->create();
     }
 }

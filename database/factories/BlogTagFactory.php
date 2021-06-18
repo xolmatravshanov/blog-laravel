@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Blog;
 use App\Models\BlogTag;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BlogTagFactory extends Factory
@@ -22,8 +24,8 @@ class BlogTagFactory extends Factory
     public function definition()
     {
         return [
-           'blog_id' => '',
-           'tag_id' => ''
+           'blog_id' => rand(1, Blog::count()),
+           'tag_id' => rand(1, Tag::count()),
         ];
     }
 }

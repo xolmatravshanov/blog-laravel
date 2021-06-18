@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
          * No Related Models
          */
 
+
         // User
         // OffensiveWords
         // Tags
@@ -42,34 +43,34 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             OffensiveWordSeeder::class,
-            User::factory(self::defaultCreateCounts['user']),
-            Tag::factory(self::defaultCreateCounts['tag']),
-            Category::factory(self::defaultCreateCounts['category'])
+           // UserSeeder::class,
+            TagSeeder::class,
+            CategorySeeder::class,
         ]);
+
+
+
 
         /**
          * Related Models
          */
 
+    Blog::factory(self::defaultCreateCounts['blog']);
         // Blog -> user_id
         // Blog_tag -> blog_id, tag_id
         // Comment ->user_id blog_id
-
-
         // Subscriber -> writer_id, subscriber_id => reader_id
 
 
 
-        /* \App\Models\User::factory(self::defaultCreateCounts['user'])
-            ->create()->each(function ($user) {
-                Blog::factory(self::defaultCreateCounts['blog'])->create(['user_id' => $user->id])->each(function ($blog) {
+            /* \App\Models\User::factory(self::defaultCreateCounts['user'])
+                ->create()->each(function ($user) {
+                    Blog::factory(self::defaultCreateCounts['blog'])->create(['user_id' => $user->id])->each(function ($blog) {
 
-                });
-            });*/
+                    });
+                });*/
 
-        /*
-
-
+            /*
 
         */
     }

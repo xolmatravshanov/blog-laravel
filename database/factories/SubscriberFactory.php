@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Subscriber;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SubscriberFactory extends Factory
@@ -23,8 +24,8 @@ class SubscriberFactory extends Factory
     {
         return [
             'id' => '',
-            'writer_id' => '',
-            'subscriber_id' => '',
+            'writer_id' => rand(1, User::count()),
+            'subscriber_id' => rand(1, User::count()),
         ];
     }
 }

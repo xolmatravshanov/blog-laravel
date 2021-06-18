@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Blog;
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BlogFactory extends Factory
@@ -27,8 +29,8 @@ class BlogFactory extends Factory
             'writer_id' => '',
             'status' => Blog::writer_status['publish'],
             'checker_status' => Blog::checker_status['published'],
-            'checker_id' => '',
-            'category_id' => '',
+            'checker_id' => rand(1, User::count()),
+            'category_id' => rand(1, Category::count()),
         ];
 
 
