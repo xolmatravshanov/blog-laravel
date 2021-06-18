@@ -24,9 +24,9 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->realText(20),
+            'title' => $this->faker->realText(30),
             'body' => $this->faker->realText(),
-            'writer_id' => '',
+            'writer_id' => rand(1, User::count()),
             'status' => Blog::writer_status['publish'],
             'checker_status' => Blog::checker_status['published'],
             'checker_id' => rand(1, User::count()),

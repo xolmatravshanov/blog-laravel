@@ -9,6 +9,7 @@ class BlogTag extends Model
 {
     use HasFactory;
 
+    protected $table = 'blog_tags';
 
 
 }

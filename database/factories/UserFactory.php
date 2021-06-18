@@ -25,12 +25,23 @@ class UserFactory extends Factory
     public function definition()
     {
 
+        $roles = [
+            User::role['reader'],
+            User::role['writer'],
+            User::role['checker'],
+            User::role['admin'],
+        ];
+
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make($this->faker->unique()->safeEmail()), // password
+            'role' => $roles[rand(0,3)], // password
             'remember_token' => Str::random(10),
+            'firts_name' => $this->faker->name,
+            'last_name' => $this->faker->lastName,
+            'phone' => $this->faker->phoneNumber,
         ];
 
     }

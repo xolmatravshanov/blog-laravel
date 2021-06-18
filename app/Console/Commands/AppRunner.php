@@ -56,7 +56,11 @@ class AppRunner extends Command
         /// run all migrations
         exec($this->migrationCommand);
 
+
+        var_dump('Seeding database is started');
         // run all seed
+
+        var_dump($this->dbSeedCommand);
         exec($this->dbSeedCommand);
 
     }

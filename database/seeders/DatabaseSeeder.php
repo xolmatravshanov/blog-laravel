@@ -57,8 +57,6 @@ class DatabaseSeeder extends Seeder
             SubscriberSeeder::class,
         ]);
 
-
-
         /**
          * Related Models
          */

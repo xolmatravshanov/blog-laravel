@@ -23,7 +23,6 @@ class SubscriberFactory extends Factory
     public function definition()
     {
         return [
-            'id' => '',
             'writer_id' => rand(1, User::count()),
             'subscriber_id' => rand(1, User::count()),
         ];
