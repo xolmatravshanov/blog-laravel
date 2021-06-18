@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class BlogController extends Controller
     {
 
         $blogs = Blog::all();
-        return view('blog.index', compact('blogs'));
+        return view('admin.blog.index', compact('blogs'));
 
     }
 
@@ -28,7 +29,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        return view('admin.blog.create');
     }
 
     /**
@@ -49,7 +50,7 @@ class BlogController extends Controller
 
         Blog::create($request->all());
 
-        return redirect()->route('blog.index')
+        return redirect()->route('admin.blog.index')
             ->with('success', 'blog created successfully.');
 
     }
@@ -64,7 +65,7 @@ class BlogController extends Controller
     {
         $blog = Blog::where('id', $id)->first();
 
-        return view('blog.show', compact('blog'));
+        return view('admin.blog.show', compact('blog'));
     }
 
     /**
@@ -78,7 +79,7 @@ class BlogController extends Controller
 
         $blog = Blog::where('id', $id)->first();
 
-        return view('blog.edit',compact('blog'));
+        return view('admin.blog.edit',compact('blog'));
 
     }
 
@@ -102,7 +103,7 @@ class BlogController extends Controller
 
         $blog->update($request->all());
 
-        return redirect()->route('blog.index')->with('success','blog updated successfully');
+        return redirect()->route('admin.blog.index')->with('success','blog updated successfully');
     }
 
     /**
@@ -117,7 +118,7 @@ class BlogController extends Controller
 
         $blog->delete();
 
-        return redirect()->route('blog.index')
+        return redirect()->route('admin.blog.index')
             ->with('success','blog deleted successfully');
 
     }

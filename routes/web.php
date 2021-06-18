@@ -1,12 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\Admin\TagController;
+
+
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogController;
-use App\Http\Controllers\HomeController;
-use \App\Http\Controllers\CategoryController;
-use \App\Http\Controllers\CommentController;
-use \App\Http\Controllers\SubscriberController;
-use \App\Http\Controllers\TagController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,14 +27,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/index', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('/blog', BlogController::class);
-    Route::resource('/category', CategoryController::class);
-    Route::resource('/comment', CommentController::class);
-    Route::resource('/subscriber', SubscriberController::class);
-    Route::resource('/tag', TagController::class);
+
+   Route::prefix('admin')->group(function () {
+       Route::resource('/blog', BlogController::class);
+       Route::resource('/category', CategoryController::class);
+       Route::resource('/comment', CommentController::class);
+       Route::resource('/subscriber', SubscriberController::class);
+       Route::resource('/tag', TagController::class);
+   });
+
 });
 
 
