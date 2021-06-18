@@ -8,6 +8,19 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
+    public const defaultCreateCounts = [
+        'category'=> 10,
+        'blog' => 50,
+        'blog_tag' => 60,
+        'comment' => 400,
+        'offensive_words' => 40,
+        'subscriber' => 50,
+        'user' => 50,
+        'tag' => 50,
+    ];
+
+
     /**
      * Seed the application's database.
      *
@@ -16,19 +29,34 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        //Category::factory(1)->create();
 
-      \App\Models\User::factory(10)
-          ->create()->each(function ($user){
+        // no related
 
-              Blog::factory(15)->create(['user_id' => $user->id])->each(function ($blog){
+        // User
+        // OffensiveWords
+        // tags
+        //categories
 
-              });
+        //Related
+        // blog ->user_id
+        // blog_tag -> blog_id tag_id
+        // comment ->user_id blog_id
 
-          });
+        // subscriber -> writer_id, subscriber_id => reader_id
 
-        $this->call([
+
+
+        \App\Models\User::factory(self::defaultCreateCounts['user'])
+            ->create()->each(function ($user) {
+                Blog::factory(self::defaultCreateCounts['blog'])->create(['user_id' => $user->id])->each(function ($blog) {
+
+                });
+            });
+
+
+
+        /*$this->call([
             OffensiveWordSeeder::class,
-        ]);
+        ]);*/
     }
 }
