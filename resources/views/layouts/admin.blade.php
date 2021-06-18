@@ -178,7 +178,6 @@
 
         #content {
             width: 100%;
-            padding: 20px;
             min-height: 100vh;
             transition: all 0.3s;
         }
@@ -199,6 +198,27 @@
             #sidebarCollapse span {
                 display: none;
             }
+        }
+
+
+        .main-content{
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .content{
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .footer{
+            background-color: #3862FF;
+            color: #fff;
+            text-align: center;
+            padding: 0;
+            margin: 0;
         }
     </style>
 
@@ -262,7 +282,7 @@
         </nav>
 
         <!-- Page Content  -->
-        <div id="content">
+        <div id="content" class="main-content">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
@@ -302,6 +322,9 @@
                 @yield('content')
             </main>
 
+            <div class="footer">
+              Admin Dashbord for CMS  {{ date('Y') }}
+            </div>
         </div>
     </div>
 
