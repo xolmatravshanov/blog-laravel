@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
        Route::resource('/comment', CommentController::class);
        Route::resource('/subscriber', SubscriberController::class);
        Route::resource('/tag', TagController::class);
+       Route::resource('/user', UserController::class);
    });
 
 });
