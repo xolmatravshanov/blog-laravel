@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
+
         /**
          * No Related Models
          */
@@ -42,12 +43,19 @@ class DatabaseSeeder extends Seeder
         // Categories
 
         $this->call([
+            UserSeeder::class,
             OffensiveWordSeeder::class,
-           // UserSeeder::class,
             TagSeeder::class,
             CategorySeeder::class,
         ]);
 
+
+        $this->call([
+            BlogSeeder::class,
+            BlogTagSeeder::class,
+            CommentSeeder::class,
+            SubscriberSeeder::class,
+        ]);
 
 
 
@@ -55,7 +63,6 @@ class DatabaseSeeder extends Seeder
          * Related Models
          */
 
-    Blog::factory(self::defaultCreateCounts['blog']);
         // Blog -> user_id
         // Blog_tag -> blog_id, tag_id
         // Comment ->user_id blog_id

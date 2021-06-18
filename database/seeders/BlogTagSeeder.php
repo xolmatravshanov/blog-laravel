@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 class BlogTagSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      *
@@ -16,4 +17,6 @@ class BlogTagSeeder extends Seeder
     {
        BlogTag::factory(80)->create();
     }
+
+
 }
