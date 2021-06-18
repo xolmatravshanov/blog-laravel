@@ -6,6 +6,9 @@ use Illuminate\Database\Seeder;
 
 class TagSeeder extends Seeder
 {
+
+
+
     /**
      * Run the database seeds.
      *

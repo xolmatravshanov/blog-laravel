@@ -23,7 +23,7 @@
             .color-primary {
                 color: #28b0f8;
             }
-            
+
 
         </style>
     @endpush
