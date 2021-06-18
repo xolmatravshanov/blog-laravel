@@ -12,11 +12,14 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
@@ -25,6 +28,7 @@
 */
 
         @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
         body {
             font-family: 'Poppins', sans-serif;
             background: #fafafa;
@@ -81,7 +85,7 @@
         #sidebar {
             min-width: 250px;
             max-width: 250px;
-            background: #7386D5;
+            background: #3862ff;
             color: #fff;
             transition: all 0.3s;
         }
@@ -92,7 +96,7 @@
 
         #sidebar .sidebar-header {
             padding: 20px;
-            background: #6d7fcc;
+            background: #3862ff;
         }
 
         #sidebar ul.components {
@@ -112,14 +116,14 @@
         }
 
         #sidebar ul li a:hover {
-            color: #7386D5;
+            color: #3862ff;
             background: #fff;
         }
 
-        #sidebar ul li.active>a,
+        #sidebar ul li.active > a,
         a[aria-expanded="true"] {
             color: #fff;
-            background: #6d7fcc;
+            background: #3862ff;
         }
 
         a[data-toggle="collapse"] {
@@ -137,7 +141,7 @@
         ul ul a {
             font-size: 0.9em !important;
             padding-left: 30px !important;
-            background: #6d7fcc;
+            background: #3862ff;
         }
 
         ul.CTAs {
@@ -152,14 +156,19 @@
             margin-bottom: 5px;
         }
 
+        #sidebarCollapse {
+            background-color: #3862ff !important;
+            color: #fff;
+        }
+
         a.download {
             background: #fff;
-            color: #7386D5;
+            color: #3862ff;
         }
 
         a.article,
         a.article:hover {
-            background: #6d7fcc !important;
+            background: #3862ff !important;
             color: #fff !important;
         }
 
@@ -182,9 +191,11 @@
             #sidebar {
                 margin-left: -250px;
             }
+
             #sidebar.active {
                 margin-left: 0;
             }
+
             #sidebarCollapse span {
                 display: none;
             }
@@ -196,115 +207,119 @@
 </head>
 <body>
 
-    <div id="app">
-        <div class="wrapper">
-            <!-- Sidebar  -->
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>Company Logo</h3>
-                </div>
+<div id="app">
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Company Logo</h3>
+            </div>
 
-                <ul class="list-unstyled components">
-                    <p>Heading for Side Bar</p>
-                    <li class="active">
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                            <li>
-                                <a href="#">Home 1</a>
+            <ul class="list-unstyled components">
+                <p>Heading for Side Bar</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">Home 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ url('admin/blog') }}">Blogs</a>
+                </li>
+                <li>
+                    <a href="{{ url('admin/user') }}">Users</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
+                       class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <span>
+                                <i id="sidebarCollapseLeft" class="fa fa-arrow-left" aria-hidden="true"></i>
+                                <i id="sidebarCollapseRight" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
                             </li>
-                            <li>
-                                <a href="#">Home 2</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
                             </li>
-                            <li>
-                                <a href="#">Home 3</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
                             </li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="{{ url('admin/blog') }}">Blogs</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('admin/user') }}">Users</a>
-                    </li>
-                    <li>
-                        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                        <ul class="collapse list-unstyled" id="pageSubmenu">
-                            <li>
-                                <a href="#">Page 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Page 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </nav>
 
-            <!-- Page Content  -->
-            <div id="content">
 
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info">
-                            <span>
-                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                            </span>
-                        </button>
-                        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <i class="fas fa-align-justify"></i>
-                        </button>
+            <main class="content">
+                @yield('content')
+            </main>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="nav navbar-nav ml-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#">Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Page</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-
-
-
-                <main class="content">
-                    @yield('content')
-                </main>
-
-            </div>
         </div>
-
-
-
-
-
     </div>
 
-    <script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>
 
-    @stack('script')
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#sidebarCollapse').on('click', function () {
+
+            $('#sidebar').toggleClass('active');
+            var isActive = $('#sidebar').hasClass('active');
+
+        //
+        });
+    });
+</script>
+
+@stack('script')
 </body>
 </html>
