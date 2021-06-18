@@ -22,8 +22,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-           'id' => '',
-           'text' => '',
+           'text' => $this->faker->realText(),
            'blog_id' => '',
            'user_id' => '',
            'parent_id' => '',

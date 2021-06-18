@@ -22,11 +22,11 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'id' => '',
-            'title' => '',
-            'body' => '',
+            'title' => $this->faker->realText(20),
+            'body' => $this->faker->realText(),
             'writer_id' => '',
-            'status' => '',
+            'status' => Blog::writer_status['publish'],
+            'checker_status' => Blog::checker_status['published'],
             'checker_id' => '',
             'category_id' => '',
         ];
