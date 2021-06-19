@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -19,7 +20,7 @@ class BlogController extends Controller
 
         $blogs = Blog::paginate(15);
 
-    return view('admin.blog.index',
+        return view('admin.blog.index',
             compact('blogs'));
 
     }
@@ -31,7 +32,16 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+
+        $writer_statuses = \App\Models\Blog::writer_status;
+
+        $categories = Category::all()->toArray();
+        $categoriesReturn = [];
+        foreach ($categories as $category){
+                $categoriesReturn[$category['id']] = $category['title'];
+        }
+
+        return view('admin.blog.create', compact('writer_statuses', 'categoriesReturn'));
     }
 
     /**
@@ -81,7 +91,7 @@ class BlogController extends Controller
 
         $blog = Blog::where('id', $id)->first();
 
-        return view('admin.blog.edit',compact('blog'));
+        return view('admin.blog.edit', compact('blog'));
 
     }
 
@@ -105,7 +115,7 @@ class BlogController extends Controller
 
         $blog->update($request->all());
 
-        return redirect()->route('admin.blog.index')->with('success','blog updated successfully');
+        return redirect()->route('admin.blog.index')->with('success', 'blog updated successfully');
     }
 
     /**
@@ -116,12 +126,12 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        $blog  = Blog::where('id', $id);
+        $blog = Blog::where('id', $id);
 
         $blog->delete();
 
         return redirect()->route('admin.blog.index')
-            ->with('deleteSuccess','blog deleted successfully');
+            ->with('deleteSuccess', 'blog deleted successfully');
 
     }
 }

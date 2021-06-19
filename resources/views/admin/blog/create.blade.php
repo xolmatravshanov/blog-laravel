@@ -29,7 +29,9 @@
                 <input
                     type="text"
                     class="form-control"
-                    placeholder="Title">
+                    placeholder="Title"
+                    required
+                >
             </div>
 
             <div>
@@ -38,12 +40,31 @@
                     'data' => [
                          'name' => 'selectName',
                          'class' => 'selectClass',
-                         'items' => \App\Models\Blog::writer_status
+                         'items' => $writer_statuses
+                        ]
+                ])
+            </div>
+
+            <div>
+
+                @include('components.common.select2', [
+                    'data' => [
+                         'name' => 'selectName',
+                         'class' => 'selectClass',
+                         'items' => $categoriesReturn
                         ]
                 ])
             </div>
 
 
+
+            <div>
+                <button
+                    class="btn btn-outline-primary w-100"
+                    type="submit">
+                    Save
+                </button>
+            </div>
         </form>
     </div>
 @endsection
