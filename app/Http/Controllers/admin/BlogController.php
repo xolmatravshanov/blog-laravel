@@ -161,7 +161,7 @@ class BlogController extends Controller
         $blog->update($data);
 
         return redirect()->route('admin.blog.index')
-            ->with('success', 'blog updated successfully');
+            ->with('success', "blog updated successfully {{ $blog->id }}");
     }
 
     /**

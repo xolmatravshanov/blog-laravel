@@ -76,7 +76,14 @@
             </div>
 
             <div>
-                @include('components.common.ckeditor')
+                @include('components.common.ckeditor', [
+                     'data' => [
+                         'name' => 'body',
+                         'id' => 'body',
+                         'defaultValue' => $blog->body,
+                      ]
+
+             ])
             </div>
 
 

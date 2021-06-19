@@ -75,9 +75,14 @@
             </div>
 
             <div>
-                @include('components.common.ckeditor')
+                @include('components.common.ckeditor', [
+                    'data' => [
+                        'name' => 'body',
+                        'id' => 'body',
+                        'defaultValue' => 'Writing Blog'
+                        ]
+                    ])
             </div>
-
 
             <div>
                 @include('components.common.select2', [
