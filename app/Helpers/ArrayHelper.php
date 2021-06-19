@@ -5,7 +5,7 @@ namespace App\Helpers;
 class ArrayHelper
 {
 
-    public function map(array $array, $from, $to)
+    public static function map(array $array, $from, $to)
     {
         $return = [];
 

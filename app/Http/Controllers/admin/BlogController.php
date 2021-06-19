@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\ArrayHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class BlogController extends Controller
 {
@@ -37,16 +39,13 @@ class BlogController extends Controller
         $writer_statuses = \App\Models\Blog::writer_status;
 
         $categories = Category::all()->toArray();
-        $categoriesReturn = [];
-        foreach ($categories as $category){
-                $categoriesReturn[$category['id']] = $category['title'];
-        }
-
         $tags = Tag::all()->toArray();
 
+        $categories = ArrayHelper::map($categories, 'id', 'title');
+        $tags = ArrayHelper::map($tags, 'id', 'title');
 
 
-        return view('admin.blog.create', compact('writer_statuses', 'categoriesReturn', 'tags'));
+        return view('admin.blog.create', compact('writer_statuses', 'categories', 'tags'));
     }
 
     /**

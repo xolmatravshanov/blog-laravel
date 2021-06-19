@@ -42,19 +42,20 @@
 @endphp
 
 <label for="{{ $data['name'] }}">{{ $data['labelText'] }}</label>
-<select name="{{$data['multiple'] ? $data['name'].'[]' : $data['name']}}" class="{{ $data['class'] }} form-control"
+<select id="{{$data['class']}}" name="{{$data['multiple'] ? $data['name'].'[]' : $data['name']}}" class="{{ $data['class'] }} form-control"
     {{ $data['multiple'] }}>
     @foreach($data['items'] as $key => $item)
         <option value="{{ $key }}">{{ $item }}</option>
     @endforeach
 </select>
 
-@push('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+@push('script')
+
+
     <script>
         $(document).ready(function () {
-            $('.selectClass').select2({
-                placeholder: {{ $data['placeholder'] }}
+            $("#{{$data['class']}}").select2({
+                placeholder: "{{ $data['placeholder'] }}"
             });
         });
     </script>

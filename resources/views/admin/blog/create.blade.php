@@ -14,7 +14,6 @@
         }
 
 
-
     </style>
 @endpush
 
@@ -40,29 +39,30 @@
 
                 @include('components.common.select2', [
                     'data' => [
-                         'name' => 'selectName',
+                         'name' => 'writer_status',
                          'labelText' => 'Status',
-                         'class' => 'selectClass',
+                         'class' => 'writer_status',
+                         'placeholder' => 'PlaceHolder',
                          'items' => $writer_statuses
                         ]
                 ])
             </div>
-                {{-- Category --}}
+            {{-- Category --}}
             <div>
 
                 @include('components.common.select2', [
                     'data' => [
-                         'name' => 'selectName',
-                         'class' => 'selectClass',
+                         'name' => 'category',
+                         'class' => 'category',
                          'labelText' => 'Category',
-                         'items' => $categoriesReturn
+                         'items' => $categories
                         ]
                 ])
 
             </div>
 
             <div>
-                    @include('components.common.ckeditor')
+                @include('components.common.ckeditor')
             </div>
 
             <div>
@@ -70,8 +70,9 @@
                 'data' => [
                      'name' => 'tags',
                      'labelText' => 'Tags',
-                     'class' => 'selectClass',
-                     'items' => $writer_statuses
+                     'class' => 'tags',
+                     'multiple' => 'multiple',
+                     'items' => $tags
                     ]
                  ])
             </div>
