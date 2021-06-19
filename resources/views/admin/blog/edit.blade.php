@@ -32,9 +32,8 @@
         @endif
 
         <h1 class="text-center">Edit {{ $blog->id }}</h1>
-        <form action="{{ route('admin.blog.store') }}" method="post">
+        <form action="{{ route('admin.blog.update', $blog->id) }}" method="PUT" >
             @csrf
-
             <div>
                 <label for="title">Title</label>
                 <input
@@ -50,7 +49,6 @@
                 Status
             --}}
             <div>
-
                 @include('components.common.select2', [
                     'data' => [
                          'name' => 'status',
@@ -63,7 +61,6 @@
             </div>
             {{-- Category --}}
             <div>
-
                 @include('components.common.select2', [
                     'data' => [
                          'name' => 'category_id',
