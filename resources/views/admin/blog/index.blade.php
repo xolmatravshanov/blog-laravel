@@ -56,16 +56,25 @@
                 <td>{{ $blog->category_id }}</td>
                 <td>{{ $blog->created_at }}</td>
                 <td>
-                    <button>
-                        <i class="fa fa-trash actions-icons" aria-hidden="true"></i>
-                    </button>
-                    <button>
-                        <i class="fa fa-pencil actions-icons" aria-hidden="true"></i>
-                    </button>
-                    <button>
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                    </button>
-                </td>
+
+
+
+                    <form action="{{ route('admin.blog.destroy',$blog->id) }}" method="POST">
+
+                        <a class="btn btn-info" href="{{ route('admin.blog.show',$blog->id) }}">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+
+                        <a class="btn btn-primary" href="{{ route('admin.blog.edit',$blog->id) }}">
+                            <i class="fa fa-pencil actions-icons" aria-hidden="true"></i>
+                        </a>
+
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash actions-icons" aria-hidden="true"></i>
+                        </button>
+                    </form>
             </tr>
         @endforeach
         </tbody>
@@ -73,7 +82,6 @@
 
     {{-- Pagination --}}
     {{ $blogs->links() }}
-
 
 @endsection
 

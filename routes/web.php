@@ -31,7 +31,10 @@ Route::get('/index', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 
-   Route::prefix('admin')->group(function () {
+   Route::group([
+        'prefix' => 'admin',
+        'as' => 'admin.'
+   ], function (){
        Route::resource('/blog', BlogController::class);
        Route::resource('/category', CategoryController::class);
        Route::resource('/comment', CommentController::class);
