@@ -25,13 +25,19 @@
 
     @endpush
 
-    @isset($deleteSuccess)
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            @if(is_array(session('success')))
+                <ul>
+                    @foreach (session('success') as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            @else
+                {{ session('success') }}
+            @endif
         </div>
-    @endisset
+    @endif
 
     <p class="text-right">
         <button class="btn btn-success">

@@ -11,7 +11,14 @@ class Blog extends Model
     use HasFactory;
 
     protected $table = 'blog';
-
+    protected $fillable = [
+        'category_id',
+        'title',
+        'body',
+        'status',
+        'writer_id',
+        'checker_status',
+    ];
     /**
      * status of checker role
      */

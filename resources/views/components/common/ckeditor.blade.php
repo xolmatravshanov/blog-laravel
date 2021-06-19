@@ -9,7 +9,9 @@
 @endphp
 
 <div id="editor">
-   <p>  Default Text</p>
+    <textarea name="body" id="" cols="30" rows="10">
+        Default Text
+    </textarea>
 </div>
 
 

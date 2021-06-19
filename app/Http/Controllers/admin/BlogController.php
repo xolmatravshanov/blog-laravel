@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\ArrayHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\BlogTag;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -21,7 +23,7 @@ class BlogController extends Controller
     public function index()
     {
 
-        $blogs = Blog::paginate(15);
+        $blogs = Blog::orderBy('id', 'DESC')->paginate(15);
 
         return view('admin.blog.index',
             compact('blogs'));
@@ -36,7 +38,7 @@ class BlogController extends Controller
     public function create()
     {
 
-        $writer_statuses = \App\Models\Blog::writer_status;
+        $writer_statuses = Blog::writer_status;
 
         $categories = Category::all()->toArray();
         $tags = Tag::all()->toArray();
@@ -44,8 +46,8 @@ class BlogController extends Controller
         $categories = ArrayHelper::map($categories, 'id', 'title');
         $tags = ArrayHelper::map($tags, 'id', 'title');
 
-
         return view('admin.blog.create', compact('writer_statuses', 'categories', 'tags'));
+
     }
 
     /**
@@ -56,15 +58,29 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'writer_id' => 'required',
             'status' => 'required',
             'category_id' => 'required',
         ]);
 
-        Blog::create($request->all());
+        $data = $request->all();
+
+        $data['writer_id'] = Auth::id();
+        $data['checker_status'] = Blog::checker_status['new'];
+
+        $blog = Blog::create($data);
+
+        if (!empty($data['tags']))
+            foreach ($data['tags'] as $tag_id) {
+                $Tag = new BlogTag();
+                $Tag->blog_id = $blog->id;
+                $Tag->tag_id = $tag_id;
+                $Tag->save();
+            }
 
         return redirect()->route('admin.blog.index')
             ->with('success', 'blog created successfully.');
@@ -95,7 +111,22 @@ class BlogController extends Controller
 
         $blog = Blog::where('id', $id)->first();
 
-        return view('admin.blog.edit', compact('blog'));
+
+        $writer_statuses = Blog::writer_status;
+
+        $categories = Category::all()->toArray();
+        $tags = Tag::all()->toArray();
+
+        $categories = ArrayHelper::map($categories, 'id', 'title');
+        $tags = ArrayHelper::map($tags, 'id', 'title');
+
+
+        return view('admin.blog.edit', compact(
+            'blog',
+            'writer_statuses',
+            'categories',
+            'tags'
+        ));
 
     }
 

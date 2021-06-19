@@ -19,7 +19,7 @@ class Blog extends Migration
             $table->longText('body')->nullable(false);
             $table->integer('writer_id')->nullable(false);
             $table->string('status')->nullable(false);
-            $table->integer('checker_id');
+            $table->integer('checker_id')->nullable(true);
             $table->integer('category_id')->nullable(false);
             $table->timestamps();
         });
