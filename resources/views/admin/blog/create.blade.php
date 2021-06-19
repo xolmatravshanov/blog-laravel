@@ -3,15 +3,24 @@
 
 @push('styles')
     <style>
+
         .content-container {
             margin: 0 auto;
             width: 60%;
         }
+
+        form > div {
+            margin-top: 20px;
+        }
+
+
+
     </style>
 @endpush
 
 @section('content')
     <div class="content-container">
+        <h1 class="text-center">Create Blog</h1>
         <form action="{{ route('admin.blog.store') }}" method="post">
             @csrf
 
@@ -22,9 +31,19 @@
                     class="form-control"
                     placeholder="Title">
             </div>
+
             <div>
-                @include('components.common.select2')
+
+                @include('components.common.select2', [
+                    'data' => [
+                         'name' => 'selectName',
+                         'class' => 'selectClass',
+                         'items' => \App\Models\Blog::writer_status
+                        ]
+                ])
             </div>
+
+
         </form>
     </div>
 @endsection
