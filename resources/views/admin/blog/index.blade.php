@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 
-
-
 @section('content')
     {{--    write  html here --}}
 
@@ -24,9 +22,17 @@
                 color: #28b0f8;
             }
 
-
         </style>
+
     @endpush
+
+    @isset($success)
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endisset
 
 
     <table class="table">
@@ -56,8 +62,6 @@
                 <td>{{ $blog->category_id }}</td>
                 <td>{{ $blog->created_at }}</td>
                 <td>
-
-
 
                     <form action="{{ route('admin.blog.destroy',$blog->id) }}" method="POST">
 
