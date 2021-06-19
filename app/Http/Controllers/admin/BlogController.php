@@ -19,7 +19,8 @@ class BlogController extends Controller
 
         $blogs = Blog::paginate(15);
 
-        return view('admin.blog.index', compact('blogs'));
+    return view('admin.blog.index',
+            compact('blogs'));
 
     }
 
@@ -120,7 +121,7 @@ class BlogController extends Controller
         $blog->delete();
 
         return redirect()->route('admin.blog.index')
-            ->with('success','blog deleted successfully');
+            ->with('deleteSuccess','blog deleted successfully');
 
     }
 }

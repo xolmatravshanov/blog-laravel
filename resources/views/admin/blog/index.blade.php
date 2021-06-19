@@ -21,12 +21,11 @@
             .color-primary {
                 color: #28b0f8;
             }
-
         </style>
 
     @endpush
 
-    @isset($success)
+    @isset($deleteSuccess)
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -34,7 +33,13 @@
         </div>
     @endisset
 
-
+    <p class="text-right">
+        <button class="btn btn-success">
+            <a href="{{ route('admin.blog.create') }}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </a>
+        </button>
+    </p>
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -63,7 +68,7 @@
                 <td>{{ $blog->created_at }}</td>
                 <td>
 
-                    <form action="{{ route('admin.blog.destroy',$blog->id) }}" method="POST">
+                    <form action="{{ route('admin.blog.destroy', $blog->id) }}" method="POST">
 
                         <a class="btn btn-info" href="{{ route('admin.blog.show',$blog->id) }}">
                             <i class="fa fa-eye" aria-hidden="true"></i>
