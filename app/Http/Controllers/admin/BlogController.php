@@ -144,6 +144,7 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
 
+
         $blog = Blog::where('id', $id)->first();
 
         $request->validate([
@@ -152,7 +153,6 @@ class BlogController extends Controller
             'status' => 'required',
             'category_id' => 'required',
         ]);
-
 
         $data = $request->all();
         $data['writer_id'] = Auth::id();
