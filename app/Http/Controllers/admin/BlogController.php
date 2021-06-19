@@ -109,8 +109,7 @@ class BlogController extends Controller
     public function edit($id)
     {
 
-        $blog = Blog::where('id', $id)->first();
-
+        $blog = Blog::where('id', $id)->firstOrFail();
 
         $writer_statuses = Blog::writer_status;
 
@@ -120,12 +119,18 @@ class BlogController extends Controller
         $categories = ArrayHelper::map($categories, 'id', 'title');
         $tags = ArrayHelper::map($tags, 'id', 'title');
 
+        $blog_tags = BlogTag::where('blog_id', $blog->id)
+            ->get()
+            ->toArray();
+
+        $blog_tags = ArrayHelper::map($blog_tags, 'blog_id', 'tag_id');
 
         return view('admin.blog.edit', compact(
             'blog',
             'writer_statuses',
             'categories',
-            'tags'
+            'tags',
+            'blog_tags'
         ));
 
     }
@@ -139,18 +144,24 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd($request->all());
         $blog = Blog::where('id', $id)->first();
+
         $request->validate([
             'title' => 'required',
             'body' => 'required',
-            'writer_id' => 'required',
             'status' => 'required',
             'category_id' => 'required',
         ]);
 
-        $blog->update($request->all());
+        $data = $request->all();
+        $data['writer_id'] = Auth::id();
+        $data['checker_status'] = $blog->checker_status;
 
-        return redirect()->route('admin.blog.index')->with('success', 'blog updated successfully');
+        $blog->update($data);
+
+        return redirect()->route('admin.blog.index')
+            ->with('success', 'blog updated successfully');
     }
 
     /**
@@ -166,7 +177,7 @@ class BlogController extends Controller
         $blog->delete();
 
         return redirect()->route('admin.blog.index')
-            ->with('deleteSuccess', 'blog deleted successfully');
+            ->with('success', 'blog deleted successfully');
 
     }
 }
