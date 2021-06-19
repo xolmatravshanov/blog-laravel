@@ -108,7 +108,6 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-
         $blog = Blog::where('id', $id)->firstOrFail();
 
         $writer_statuses = Blog::writer_status;
