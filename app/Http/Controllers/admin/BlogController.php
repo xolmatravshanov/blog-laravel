@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -41,7 +42,11 @@ class BlogController extends Controller
                 $categoriesReturn[$category['id']] = $category['title'];
         }
 
-        return view('admin.blog.create', compact('writer_statuses', 'categoriesReturn'));
+        $tags = Tag::all()->toArray();
+
+
+
+        return view('admin.blog.create', compact('writer_statuses', 'categoriesReturn', 'tags'));
     }
 
     /**

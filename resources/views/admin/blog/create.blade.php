@@ -33,7 +33,9 @@
                     required
                 >
             </div>
-
+            {{--
+                Status
+            --}}
             <div>
 
                 @include('components.common.select2', [
@@ -45,7 +47,7 @@
                         ]
                 ])
             </div>
-
+                {{-- Category --}}
             <div>
 
                 @include('components.common.select2', [
@@ -59,6 +61,20 @@
 
             </div>
 
+            <div>
+                    @include('components.common.ckeditor')
+            </div>
+
+            <div>
+                @include('components.common.select2', [
+                'data' => [
+                     'name' => 'tags',
+                     'labelText' => 'Tags',
+                     'class' => 'selectClass',
+                     'items' => $writer_statuses
+                    ]
+                 ])
+            </div>
 
 
             <div>
