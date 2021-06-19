@@ -39,6 +39,7 @@
                 @include('components.common.select2', [
                     'data' => [
                          'name' => 'selectName',
+                         'labelText' => 'Status',
                          'class' => 'selectClass',
                          'items' => $writer_statuses
                         ]
@@ -51,9 +52,11 @@
                     'data' => [
                          'name' => 'selectName',
                          'class' => 'selectClass',
+                         'labelText' => 'Category',
                          'items' => $categoriesReturn
                         ]
                 ])
+
             </div>
 
 
@@ -65,6 +68,8 @@
                     Save
                 </button>
             </div>
+
+
         </form>
     </div>
 @endsection
