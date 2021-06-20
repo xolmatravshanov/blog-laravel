@@ -44,6 +44,7 @@ class BlogController extends Controller
         $tags = Tag::all()->toArray();
 
         $categories = ArrayHelper::map($categories, 'id', 'title');
+
         $tags = ArrayHelper::map($tags, 'id', 'title');
 
         return view('admin.blog.create', compact('writer_statuses', 'categories', 'tags'));
